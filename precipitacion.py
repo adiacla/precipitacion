@@ -7,12 +7,19 @@ import pandas as pd
 
 #importar las biliotecas graficas e imágenes
 import plotly.express as px
+
+
 from PIL import Image
+import urllib.request
 import matplotlib.pyplot as plt
 from statsmodels.tsa.seasonal import seasonal_decompose
 
+import requests
 
-imagen_video = Image.open("C:/Users/adiaz/Documents/stregresion/adiaz.jpg") 
+
+urllib.request.urlretrieve('https://github.com/adiacla/precipitacion/blob/main/adiaz.jpg?raw=true',"adiaz.jpg")
+imagen_video = Image.open("adiaz.jpg") 
+
 
 
 #Librerias no usadas
@@ -23,7 +30,7 @@ imagen_video = Image.open("C:/Users/adiaz/Documents/stregresion/adiaz.jpg")
 
 st.set_page_config(
   page_title="Analisis de lluvia",
-  page_icon="C:/Users/adiaz/Documents/stregresion/rain.ico",
+  page_icon=("https://github.com/adiacla/precipitacion/blob/main/rain.ico"),
   initial_sidebar_state='auto'
   )
 
@@ -34,6 +41,7 @@ with st.container():
   st.subheader("Análisis exploratorio de la serie de tiempo de precipitación")
   st.title("Implementación en Python")
   st.write("Realizado por Alfredo Díaz Claros:wave:")
+  st.image(imagen_video , width=100)
   st.write("""
 **Introducción** Los datos fueron tomados de https://www.datos.gov.co/Ambiente-y-Desarrollo-Sostenible/Precipitaciones/ksew-j3zj,  que tiene las siguientes clausulas: 
 1.Los datos a visualizar o descargar a continuación no han sido validados por el **IDEAM**. 
@@ -103,7 +111,8 @@ todos=a = np.array(["Todos"])
 
 #Opciones de la barra lateral
 
-logo=Image.open("C:/Users/adiaz/Documents/stregresion/rain_3.png")
+urllib.request.urlretrieve('https://github.com/adiacla/precipitacion/blob/main/rain_3.png?raw=true',"rain_3.png")
+logo= Image.open("rain_3.png") 
 st.sidebar.write('...')
 st.sidebar.image(logo, width=100)
 st.sidebar.header('Opciones de análisis')
